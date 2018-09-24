@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Match } from './match.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'robin-tournament';
+  teams: string[] = [];
+  matchs: Match[] = [];
+
+  AddTeam(name: string) {
+    this.teams.push(name);
+  };
+
+  onDelete(name: string): void {
+    const index = this.teams.indexOf(name, 0);
+    if (index > -1) {
+      this.teams.splice(index, 1);
+    }
+  }
 }

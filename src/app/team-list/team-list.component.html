@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="btn-group pull-right">
+      <button (click)="onDelete()" class="btn btn-danger btn-xs">
+        <i class="glyphicon glyphicon-trash"></i>
+      </button>
+    </div>
+    <h4 class="panel-title">Teams</h4>
+  </div>
+  <div class="panel-body">
+    <div class="list-group">
+      <a *ngFor="let name of teams"
+         class="list-group-item active"
+         [class.active]="name === selectedTeam"
+         (click)="onSelect(name)">
+        {{name}}
+      </a>
+    </div>
+  </div>
+</div>
