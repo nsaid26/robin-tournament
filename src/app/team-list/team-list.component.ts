@@ -6,18 +6,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./team-list.component.css']
 })
 export class TeamListComponent {
-  selectedTeam: string;
   @Input() teams: string[];
   @Output() delete = new EventEmitter();
-  onSelected: string[];
+
+  selectedTeam: string;
 
   constructor() { }
-
   onSelect(name: string) {
     this.selectedTeam = name;
   }
-
   onDelete() {
     this.delete.emit(this.selectedTeam);
+    this.selectedTeam = this.teams ? this.teams[0] : null;
   }
 }

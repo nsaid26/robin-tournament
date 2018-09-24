@@ -1,22 +1,34 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<div class="container-fluid">
+  <nav class="navbar navbar-default">
     <div class="navbar-header">
       <a class="navbar-brand">
         <img src="assets/img/tournam-image.svg" class="logo">
       </a>
       <span class="navbar-brand">Generador de grupos</span>
     </div>
-    <div class="navbar-form navbar-center">
+    <div class="navbar-form navbar-right">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Equipo" #name>
+        <input type="text" class="form-control"
+               [value]="team"
+               (input)="team = $event.target.value"
+               placeholder="Equipo" #name required
+               style="margin-right: 0.2em;" />
       </div>
-      <button type="button" (click)="AddTeam(name.value)" class="btn btn-default">Agregar</button>
+      <button type="button"
+              (click)="AddTeam(name.value)"
+              [disabled]="!team"
+              class="btn btn-primary"
+              style="margin-right: 0.5em">
+        Agregar
+      </button>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>
 <div class="container-fluid">
-  <div class="col-md-8"></div>
-  <div class="col-md-2">
+  <div class="col-md-8">
+    <match-list></match-list>
+  </div>
+  <div class="col-md-4">
     <team-list [teams]="teams" (delete)="onDelete($event)"></team-list>
   </div>
 </div>

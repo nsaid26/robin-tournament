@@ -1,7 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="btn-group pull-right">
-      <button (click)="onDelete()" class="btn btn-danger btn-xs">
+      <button class="btn btn-danger btn-xs"
+              [disabled]="!selectedTeam"
+              (click)="onDelete()">
         <i class="glyphicon glyphicon-trash"></i>
       </button>
     </div>
