@@ -1,28 +1,28 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="btn-group pull-right">
-      <button class="btn btn-primary btn-xs">
+      <button class="btn btn-primary btn-xs"
+              (click)="onGenerate()"
+              [disabled]="(teams?.length < 4 || teams.length%2 !== 0)">
         Generar
       </button>
     </div>
     <h4 class="panel-title">Partidos</h4>
   </div>
   <div class="panel-body">
-    <div class="panel panel-default">
-      <div class="panel-heading">Fecha 1</div>
+    <div *ngFor="let round of rounds; let i = index" class="panel panel-default">
+      <div class="panel-heading">Fecha {{i + 1}}</div>
       <table class="table">
         <thead>
           <tr>
             <th>Team A</th>
             <th>Team B</th>
-            <th>Result</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>0 - 0</td>
+          <tr *ngFor="let match of round.matches">
+            <td>{{match.teamA}}</td>
+            <td>{{match.teamB}}</td>
           </tr>
         </tbody>
       </table>

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Match } from '../match.model';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { MatchDate } from '../match-date.model';
 
 @Component({
   selector: 'match-list',
@@ -7,7 +7,12 @@ import { Match } from '../match.model';
   styleUrls: ['./match-list.component.css']
 })
 export class MatchListComponent {
-  @Input() matches: Match[];
-
+  @Input() teams: string[];
+  @Input() rounds: MatchDate[];
+  @Output() generate = new EventEmitter();
   constructor() { }
+
+  onGenerate() {
+    this.generate.emit();
+  }
 }

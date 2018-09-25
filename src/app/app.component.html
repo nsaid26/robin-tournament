@@ -16,23 +16,17 @@
       </div>
       <button type="button"
               (click)="addTeam(name.value)"
-              [disabled]="!team"
+              [disabled]="(!team || teams.length >= 20)"
               class="btn btn-primary"
               style="margin-right: 0.5em">
         Agregar
-      </button>
-      <button type="button"
-              (click)="generateMatches()"
-              class="btn btn-primary"
-              style="margin-right: 0.5em">
-        Generate
       </button>
     </div>
   </nav>
 </div>
 <div class="container-fluid">
   <div class="col-md-8">
-    <match-list></match-list>
+    <match-list [teams]="teams" [rounds]="rounds" (generate)="onGenerateMatches($event)"></match-list>
   </div>
   <div class="col-md-4">
     <team-list [teams]="teams" (delete)="onDelete($event)"></team-list>

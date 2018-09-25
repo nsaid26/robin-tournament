@@ -10,21 +10,21 @@ import { MatchDate } from './match-date.model';
 export class AppComponent {
   team: string = '';
   teams: string[] = [];
-  dates: MatchDate[] = [];
+  rounds: MatchDate[] = [];
 
   addTeam(name: string) {
     this.teams.push(name);
     this.team = null;
   };
-
   onDelete(name: string): void {
+    this.rounds = [];
     const index = this.teams.indexOf(name, 0);
     if (index > -1) {
       this.teams.splice(index, 1);
     }
   }
-
-  generateMatches() {
+  onGenerateMatches() {
+    this.rounds = [];
     let n = this.teams.length;
     let rs = [];
     let ps = this.teams.slice();
@@ -43,11 +43,10 @@ export class AppComponent {
       ps.splice(1, 0, ps.pop());
     }
     for (var d of rs) {
-      let date = new MatchDate();
+      let round = new MatchDate();
       for (var m of d)
-        date.matches.push(new Match(m[0], m[1]));
-      this.dates.push(date);
+        round.matches.push(new Match(m[0], m[1]));
+      this.rounds.push(round);
     }
-    console.log(this.dates);
   }
 }
