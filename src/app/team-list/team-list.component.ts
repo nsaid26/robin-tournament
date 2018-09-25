@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'team-list',
@@ -8,7 +8,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TeamListComponent {
   @Input() teams: string[];
   @Output() delete = new EventEmitter();
-
   selectedTeam: string;
 
   constructor() { }

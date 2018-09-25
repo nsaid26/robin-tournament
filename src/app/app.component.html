@@ -15,11 +15,17 @@
                style="margin-right: 0.2em;" />
       </div>
       <button type="button"
-              (click)="AddTeam(name.value)"
+              (click)="addTeam(name.value)"
               [disabled]="!team"
               class="btn btn-primary"
               style="margin-right: 0.5em">
         Agregar
+      </button>
+      <button type="button"
+              (click)="generateMatches()"
+              class="btn btn-primary"
+              style="margin-right: 0.5em">
+        Generate
       </button>
     </div>
   </nav>
